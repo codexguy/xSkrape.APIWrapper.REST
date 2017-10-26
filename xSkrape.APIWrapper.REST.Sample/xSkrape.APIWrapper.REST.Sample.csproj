@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net471</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>APIDemo.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>@codexguy</Authors>
+    <Company>CodeX Enterprises LLC</Company>
+    <Description>This project demonstrates key functionality available in the xSrkape.APIWrapper.REST package. Examples cover processing over http.</Description>
+    <Copyright>Copyright (c) 2017</Copyright>
+    <PackageReleaseNotes />
+    <PackageTags>data inference, data parsing, tabular data, relational data, unstructured data, screen scraping, web scraping, json parsing, extract relational data, semi-structured data, data shaping</PackageTags>
+    <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\xSkrape.APIWrapper.Base\xSkrape.APIWrapper.Base.csproj" />
+    <ProjectReference Include="..\xSkrape.APIWrapper.REST\xSkrape.APIWrapper.REST.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>
