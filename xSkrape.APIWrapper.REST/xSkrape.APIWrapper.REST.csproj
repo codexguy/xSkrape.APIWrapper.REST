@@ -6,15 +6,17 @@
     <Authors>@codexguy</Authors>
     <Company>CodeX Enterprises LLC</Company>
     <Copyright>Copyright (c) 2017</Copyright>
-    <PackageTags>data inference, data parsing, tabular data, relational data, unstructured data, screen scraping, web scraping, json parsing, extract relational data, semi-structured data, data shaping</PackageTags>
+    <PackageTags>data parsing tabular relational unstructured scraping json shaping inference</PackageTags>
     <RootNamespace>xSkrape.APIWrapper</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>XSAPIREST.snk</AssemblyOriginatorKeyFile>
-    <Description>xSkrape provides data parsing for structured, semi and non-structured data sources. Extract tabular data from sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel and other sources over http/https using simple directives. Pull data from Google Docs, shape data from web API's, merge data over multiple requests, and more. This assembly interacts with Web API services offered at www.xskrape.com. Source including comprehensive demo available on github.</Description>
-    <PackageProjectUrl>http://www.xskrape.com</PackageProjectUrl>
+    <Description>xSkrape provides data parsing for structured, semi and non-structured data sources. Extract tabular and discrete data from sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel and other sources over http/https using simple directives. Pull data from Google Docs, shape data from web API's, merge data over multiple requests, and more. This assembly interacts with Web API services offered at www.xskrape.com. Source including comprehensive demo available on github.</Description>
+    <PackageProjectUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST</PackageProjectUrl>
     <PackageReleaseNotes>- Support for data over http/https is included in this release
 - Related assembly, xSkrape.APIWrapper.SQL.Core provides helper methods to load / merge data parsed with this wrapper into SQL Server
 - Up-coming release of xSkrape.APIWrapper.xsOnPrem will support calling the same methods in-process, supporting local data sources (e.g. unc files) - will be available via custom download at xskrape.com.</PackageReleaseNotes>
+    <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.0|AnyCPU'">

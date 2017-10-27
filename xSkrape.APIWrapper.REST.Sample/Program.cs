@@ -12,7 +12,7 @@ namespace APIWrapperDemo
         static void Main(string[] args)
         {
             // Substitute your own client key, obtained by visiting https://www.xskrape.com, registering and adding a client query end-point
-            // Credit usage is explained more here: https://www.xskrape.com/addcredits - usage is generally FREE up until a certain level of usage, or in the case of the in-process libraries (fixed charge per machine per month), your first month per machine can often be covered by free monthly credits as a "trial" period
+            // Credit usage is explained more here: https://www.xskrape.com/home/addcredits - usage is generally FREE up until a certain level of usage, or in the case of the in-process libraries (fixed charge per machine per month), your first month per machine can often be covered by free monthly credits as a "trial" period
             // Some examples below require your own client keys, etc. and may not return successful results without these being substituted in the code below (we have tested all examples with our own keys and got passes)
             // Something on your wish list? Have your own unique use cases? Contact me, community@codexframework.com
             // Other useful links:

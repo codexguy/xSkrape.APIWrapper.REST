@@ -9,7 +9,7 @@ namespace APIWrapperDemo
 {
     internal static class RESTExamples
     {
-        const string CLIENT_KEY = "OBTAIN_FROM_XSKRAPE.COM";
+        const string CLIENT_KEY = "98c0f811e85543f9a8a966634c949b59c858";
 
         public static async Task Example1_TabularFromCSVHttp()
         {

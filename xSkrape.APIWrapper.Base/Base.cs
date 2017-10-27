@@ -12,16 +12,31 @@ namespace xSkrape.APIWrapper
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Allows for enumeration over a DataTable as an effective list of dynamic objects where columns can be accessed using .columnname
+        /// </summary>
+        /// <param name="dt">DataTable to transform</param>
+        /// <returns></returns>
         public static IEnumerable<dynamic> AsDynamic(this DataTable dt)
         {
             foreach (DataRowView row in dt.DefaultView) yield return row.AsDynamic();
         }
 
+        /// <summary>
+        /// Allows for enumeration over a DataView as an effective list of dynamic objects where columns can be accessed using .columnname
+        /// </summary>
+        /// <param name="dv">DataView to transform</param>
+        /// <returns></returns>
         public static IEnumerable<dynamic> AsDynamic(this DataView dv)
         {
             foreach (DataRowView row in dv) yield return row.AsDynamic();
         }
 
+        /// <summary>
+        /// Allows for access to columns of a DataRowView using .columnname notation
+        /// </summary>
+        /// <param name="row">DataRowView to access columns against</param>
+        /// <returns></returns>
         public static dynamic AsDynamic(this DataRowView row)
         {
             return new DynamicDataRowView(row);
@@ -50,34 +65,4 @@ namespace xSkrape.APIWrapper
             }
         }
     }
-
-    public enum MessageProvider
-    {
-        EMAIL = 0,
-        ALLTEL = 1,
-        ATT = 2,
-        ATTENTPAGING = 3,
-        BELLMOB = 4,
-        BOOSTMOB = 5,
-        CRICKET = 6,
-        FIDO = 7,
-        HELIO = 8,
-        IRIDIUM = 9,
-        METROPCS = 10,
-        MOBIPCSHI = 11,
-        NEXTEL = 12,
-        ROGERS = 13,
-        SPRINT = 14,
-        TELUSMOB = 15,
-        THUMB = 16,
-        TMOBILEUK = 17,
-        TMOBILE = 18,
-        UNICEL = 19,
-        USCELLULAR = 20,
-        VERIZON = 21,
-        VIRGINMOB = 22,
-        VODACOMZA = 23,
-        VODAFONEIT = 24
-    }
-
 }

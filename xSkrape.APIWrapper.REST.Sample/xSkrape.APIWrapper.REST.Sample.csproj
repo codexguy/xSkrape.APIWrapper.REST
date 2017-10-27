@@ -7,14 +7,16 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>@codexguy</Authors>
     <Company>CodeX Enterprises LLC</Company>
-    <Description>This project demonstrates key functionality available in the xSrkape.APIWrapper.REST package. Examples cover processing over http.</Description>
+    <Description>This project demonstrates key functionality available in the xSrkape.APIWrapper.REST package including **</Description>
     <Copyright>Copyright (c) 2017</Copyright>
     <PackageReleaseNotes />
-    <PackageTags>data inference, data parsing, tabular data, relational data, unstructured data, screen scraping, web scraping, json parsing, extract relational data, semi-structured data, data shaping</PackageTags>
+    <PackageTags>data parsing tabular relational unstructured scraping json shaping inference</PackageTags>
     <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
+    <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

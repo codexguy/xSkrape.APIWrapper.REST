@@ -11,8 +11,47 @@ using System.Collections;
 
 namespace xSkrape.APIWrapper
 {
+    public enum MessageProvider
+    {
+        EMAIL = 0,
+        ALLTEL = 1,
+        ATT = 2,
+        ATTENTPAGING = 3,
+        BELLMOB = 4,
+        BOOSTMOB = 5,
+        CRICKET = 6,
+        FIDO = 7,
+        HELIO = 8,
+        IRIDIUM = 9,
+        METROPCS = 10,
+        MOBIPCSHI = 11,
+        NEXTEL = 12,
+        ROGERS = 13,
+        SPRINT = 14,
+        TELUSMOB = 15,
+        THUMB = 16,
+        TMOBILEUK = 17,
+        TMOBILE = 18,
+        UNICEL = 19,
+        USCELLULAR = 20,
+        VERIZON = 21,
+        VIRGINMOB = 22,
+        VODACOMZA = 23,
+        VODAFONEIT = 24
+    }
+
     public static class xSkrapeREST
     {
+        /// <summary>
+        /// Send a message to SMS or email. Only available in REST package.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="sendTo">Phone number or email address</param>
+        /// <param name="fromAddress">Your email address (used to track results, etc.)</param>
+        /// <param name="subject">Required subject line</param>
+        /// <param name="body">Required message body</param>
+        /// <param name="defaultProvider">Default is email, for SMS specify cell provider from list available at https://www.xskrape.com/Home/MsgProviderList</param>
+        /// <returns></returns>
         public async static Task<(bool success, string message, string source)> SendMessageDirect
             (string clientCode,
             IEnumerable<string> sendTo,
@@ -49,6 +88,51 @@ namespace xSkrape.APIWrapper
             }
         }
 
+        /// <summary>
+        /// Generate random data (e.g. names, addresses, etc.) that meet input criteria specs. Only available in REST package.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="pattern">A pattern string that's described here: https://www.xskrape.com/Home/ObfuscationPatterns</param>
+        /// <param name="count">Number of elements to return.</param>
+        /// <param name="uniquePercent">An optional number from 0 to 100, where 100 implies all records must be unique.</param>
+        /// <returns></returns>
+        public async static Task<(IEnumerable<string> data, bool success, string message, string source)> GetRandomData(
+            string clientCode,
+            string pattern,
+            int count,
+            int? uniquePercent = null)
+        {
+            using (var hc = new HttpClient())
+            {
+                StringBuilder xsURL = new StringBuilder($"https://www.xs.codexframework.com/api/GetRandomData?cc={WebUtility.UrlEncode(clientCode)}&pattern={WebUtility.UrlEncode(pattern)}&count={count}");
+
+                if (uniquePercent.HasValue)
+                {
+                    xsURL.Append($"&areUniquePct={uniquePercent.Value}");
+                }
+
+                var rawResult = await hc.GetAsync(xsURL.ToString());
+
+                if (!rawResult.IsSuccessStatusCode)
+                {
+                    return (null, false, $"{rawResult.StatusCode.ToString()} return value.", "Request");
+                }
+
+                var body = await rawResult.Content.ReadAsStringAsync();
+                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<CreateDataResult>(body);
+
+                return (result.Data, result.Success, result.Message, result.Source);
+            }
+        }
+
+        /// <summary>
+        /// Retrieve multiple discrete data values from a data source, returned in a bag.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="url">URL spec as documented here http://www.codexframework.com/Documentation/XSFRUrlSpec</param>
+        /// <param name="queries">Data query spec as documented here http://www.codexframework.com/Documentation/XSFRGetValueQuerySpec</param>
+        /// <param name="dateTreatment">Valid values include "fromdate" which implies there is no date conversion undertaken (or an embedded explicit time zone within a matched date is used), or names a specific time zone which is assumed to apply to any matched date.</param>
+        /// <returns></returns>
         public async static Task<(IDictionary<string, object> data, bool success, string message, string source, bool nodata, bool robotswarning, bool truncated)> GetMultiple(
             string clientCode,
             string url,
@@ -119,6 +203,14 @@ namespace xSkrape.APIWrapper
             }
         }
 
+        /// <summary>
+        /// Retrieve a single, discrete value from a data source.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="url">URL spec as documented here http://www.codexframework.com/Documentation/XSFRUrlSpec</param>
+        /// <param name="query">Data query spec as documented here http://www.codexframework.com/Documentation/XSFRGetValueQuerySpec</param>
+        /// <param name="dateTreatment">Valid values include "fromdate" which implies there is no date conversion undertaken (or an embedded explicit time zone within a matched date is used), or names a specific time zone which is assumed to apply to any matched date.</param>
+        /// <returns></returns>
         public async static Task<(object data, bool success, string message, string source)> GetSingle(
             string clientCode,
             string url,
@@ -179,35 +271,17 @@ namespace xSkrape.APIWrapper
             }
         }
 
-        public async static Task<(IEnumerable<string> data, bool success, string message, string source)> GetRandomData(
-            string clientCode, 
-            string pattern, 
-            int count, 
-            int? uniquePercent = null)
-        {
-            using (var hc = new HttpClient())
-            {
-                StringBuilder xsURL = new StringBuilder($"https://www.xs.codexframework.com/api/GetRandomData?cc={WebUtility.UrlEncode(clientCode)}&pattern={WebUtility.UrlEncode(pattern)}&count={count}");
-
-                if (uniquePercent.HasValue)
-                {
-                    xsURL.Append($"&areUniquePct={uniquePercent.Value}");
-                }
-
-                var rawResult = await hc.GetAsync(xsURL.ToString());
-
-                if (!rawResult.IsSuccessStatusCode)
-                {
-                    return (null, false, $"{rawResult.StatusCode.ToString()} return value.", "Request");
-                }
-
-                var body = await rawResult.Content.ReadAsStringAsync();
-                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<CreateDataResult>(body);
-
-                return (result.Data, result.Success, result.Message, result.Source);
-            }
-        }
-
+        /// <summary>
+        /// Retrieve a single value from a tabular data source. This operation is performed on the server.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="url">URL spec as documented here http://www.codexframework.com/Documentation/XSFRUrlSpec</param>
+        /// <param name="tableColumnName">Either the resolved column name from the matched table (as show for example in Page Explorer), or the column number (position-based, starting at zero). One can optionally apply one of the following aggregates against the column: SUM, AVG, MIN, MAX, COUNT, FIRST, LAST.</param>
+        /// <param name="tableQuery">Table identification expression as documented http://www.codexframework.com/Documentation/XSFRGetTableQuerySpec</param>
+        /// <param name="tableValueFilter">An optional filter expression that can be applied to the table to help isolate a candidate row or rows of interest.</param>
+        /// <param name="tableValueSort">An optional string that contains the column name followed by "ASC" (ascending) or "DESC" (descending).</param>
+        /// <param name="dateTreatment">Valid values include "fromdate" which implies there is no date conversion undertaken (or an embedded explicit time zone within a matched date is used), or names a specific time zone which is assumed to apply to any matched date.</param>
+        /// <returns></returns>
         public async static Task<(string data, bool success, string message, string source, bool nodata, bool robotswarning, bool truncated)> GetSingleFromTable(
             string clientCode,
             string url,
@@ -271,6 +345,20 @@ namespace xSkrape.APIWrapper
             }
         }
 
+        /// <summary>
+        /// Retrieve tabular data from a data source. Where tabular data might not be identified automatically, 'hints' can be provided to control how tabular data is found.
+        /// </summary>
+        /// <param name="clientCode">Obtained from the Queries page after logging into your xskrape.com account.</param>
+        /// <param name="url">URL spec as documented here http://www.codexframework.com/Documentation/XSFRUrlSpec</param>
+        /// <param name="tableQuery">Table identification expression as documented http://www.codexframework.com/Documentation/XSFRGetTableQuerySpec</param>
+        /// <param name="includeHeader">If True, table header names are included in the returned data feed.</param>
+        /// <param name="tableValueFilter">An optional filter expression that can be applied to the table to help isolate a candidate row or rows of interest.</param>
+        /// <param name="tableValueSort">An optional string that contains the column name followed by "ASC" (ascending) or "DESC" (descending).</param>
+        /// <param name="maxRows">Optionally restrict to a maximum number of rows.</param>
+        /// <param name="maxColumns">Optionally restrict to a maximum number of columns.</param>
+        /// <param name="dateTreatment">Valid values include "fromdate" which implies there is no date conversion undertaken (or an embedded explicit time zone within a matched date is used), or names a specific time zone which is assumed to apply to any matched date.</param>
+        /// <param name="headerRenaming">An optional set of column renaming expressions of the format "OldColumnName becomes NewColumnName", delimited by "&&" if there are multiple. </param>
+        /// <returns></returns>
         public async static Task<(DataTable data, bool success, string message, string source, bool nodata, bool robotswarning, bool truncated, bool hasheader)> GetDataTable(
             string clientCode, 
             string url, 
