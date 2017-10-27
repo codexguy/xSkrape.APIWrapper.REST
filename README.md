@@ -5,3 +5,5 @@ This assembly interacts with Web API services offered at www.xskrape.com. Most f
 
 - Support for data over http/https is included in this release
 - Related assembly, xSkrape.APIWrapper.SQL.Core, provides helper methods to load / merge data parsed with this wrapper into SQL Server
+
+Looking for a feature or have a cool idea? Drop me a line, admin@codexframework.com.
