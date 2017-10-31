@@ -5,14 +5,12 @@ This assembly interacts with Web API services offered at www.xskrape.com. Most f
 <br/><br/>
 One example is for pulling tabular data from an HTML source, in this case a spreadsheet published in Google Docs:
 <br/><br/>
-<code>
-var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spreadsheets/d/1r_gYGu8nawdIk7wpUrbL1evCqE0eygC-TZwVD9ViS-o/edit?usp=sharing", "columnname=Name");
-</code>
+<pre><code>var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spreadsheets/d/1r_gYGu8nawdIk7wpUrbL1evCqE0eygC-TZwVD9ViS-o/edit?usp=sharing", "columnname=Name");
+</pre></code>
 <br/><br/>
 Of note, <i>one line of code</i> is all that's needed here to fully express <i>where</i> the data is, and a hint is provided about what it looks like (a column titled "Name"). As a second example:
 <br/><br/>
-<pre><code>
-var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";
+<pre><code>var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";
 Dictionary<string, string> queries = new Dictionary<string, string>()
 {
 { "name", "firstelement=title" },
