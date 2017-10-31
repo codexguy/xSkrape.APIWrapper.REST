@@ -7,7 +7,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>@codexguy</Authors>
     <Company>CodeX Enterprises LLC</Company>
-    <Description>This project demonstrates key functionality available in the xSrkape.APIWrapper.REST package including **</Description>
+    <Description>This project demonstrates key functionality available in the xSrkape.APIWrapper.REST package.</Description>
     <Copyright>Copyright (c) 2017</Copyright>
     <PackageReleaseNotes />
     <PackageTags>data parsing tabular relational unstructured scraping json shaping inference</PackageTags>
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xSkrape.APIWrapper.Base" Version="1.0.0" />
+    <PackageReference Include="xSkrape.APIWrapper.Base" Version="1.0.1" />
     <PackageReference Include="xSkrape.APIWrapper.REST" Version="1.0.0" />
   </ItemGroup>
 

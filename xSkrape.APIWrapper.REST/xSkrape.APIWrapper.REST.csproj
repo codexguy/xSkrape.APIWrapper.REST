@@ -12,10 +12,10 @@
     <AssemblyOriginatorKeyFile>XSAPIREST.snk</AssemblyOriginatorKeyFile>
     <Description>xSkrape provides parsing / tabular detection for structured, semi and non-structured data sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel, DropBox, Google Docs and other sources using simple directives. Wraps the REST API offered at xskrape.com. Source + demos available on github.</Description>
     <PackageProjectUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST</PackageProjectUrl>
-    <PackageReleaseNotes>- Support for data over http/https is included in this release
-- Related assembly, xSkrape.APIWrapper.SQL.Core provides helper methods to load / merge data parsed with this wrapper into SQL Server
-- Learn more: http://www.xskrape.com/home/products
-- Up-coming release of xSkrape.APIWrapper.xsOnPrem will support calling the same methods in-process, supporting local data sources (e.g. unc files) - will be available via custom download at xskrape.com.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Support for data over http/https is included in this release 
+- Related assembly, xSkrape.APIWrapper.SQL.Core provides helper methods to load / merge data parsed with this wrapper into SQL Server 
+- Learn more: http://www.xskrape.com/home/products 
+- Up-coming release of xSkrape.APIWrapper.InProc will support calling the same methods in-process, supporting local data sources (e.g. unc files)</PackageReleaseNotes>
     <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

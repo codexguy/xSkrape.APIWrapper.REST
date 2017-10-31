@@ -13,6 +13,56 @@ namespace xSkrape.APIWrapper
     public static class Extensions
     {
         /// <summary>
+        /// Renders DataTable contents in a printable string.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static string RenderDataTable(this DataTable dt)
+        {
+            int maxWidth = 20;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (DataColumn dc in dt.Columns)
+            {
+                sb.Append(dc.ColumnName.LeftWithEllipsis(maxWidth) + "  ");
+            }
+            sb.Append(Environment.NewLine);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    sb.Append(dr[dc].ToString().LeftWithEllipsis(maxWidth) + "  ");
+                }
+                sb.Append(Environment.NewLine);
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Take n left characters of string with ellipsis used when truncated.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string LeftWithEllipsis(this string s, int length)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return s;
+            }
+
+            if (s.Length > length)
+            {
+                return s.Substring(0, length - 2) + "..";
+            }
+
+            return s.PadRight(length);
+        }
+
+        /// <summary>
         /// Allows for enumeration over a DataTable as an effective list of dynamic objects where columns can be accessed using .columnname
         /// </summary>
         /// <param name="dt">DataTable to transform</param>

@@ -33,44 +33,5 @@ namespace APIWrapperDemo
             RESTExamples.Example11_TabularDataFromGoogleDocsSpreadsheet().Wait();
             RESTExamples.Example12_PositionalBasedTabularDataInsidePreElement().Wait();
         }
-
-        public static string RenderDataTable(this DataTable dt)
-        {
-            int maxWidth = 20;
-
-            StringBuilder sb = new StringBuilder();
-
-            foreach (DataColumn dc in dt.Columns)
-            {
-                sb.Append(dc.ColumnName.Left(maxWidth) + "  ");
-            }
-            sb.Append(Environment.NewLine);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                foreach (DataColumn dc in dt.Columns)
-                {
-                    sb.Append(dr[dc].ToString().Left(maxWidth) + "  ");
-                }
-                sb.Append(Environment.NewLine);
-            }
-
-            return sb.ToString();
-        }
-
-        public static string Left(this string s, int length)
-        {
-            if (string.IsNullOrEmpty(s))
-            {
-                return s;
-            }
-
-            if (s.Length > length)
-            {
-                return s.Substring(0, length - 2) + "..";
-            }
-
-            return s.PadRight(length);
-        }
     }
 }
