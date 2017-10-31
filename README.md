@@ -12,14 +12,14 @@ var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spre
 Of note, <i>one line of code</i> is all that's needed here to fully express <i>where</i> the data is, and a hint is provided about what it looks like (a column titled "Name"). As a second example:
 <br/><br/>
 <code>
-var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";<br/>
-Dictionary<string, string> queries = new Dictionary<string, string>()<br/>
-{<br/>
-{ "name", "firstelement=title" },<br/>
-  { "windspeed", @"numberfollowsnear=Wind\ Speed" },<br/>
-  { "winddir", @"followinginnertext=Wind\ Direction" },<br/>
-  { "pubdate", @"xpath=/rss[1]/channel[1]/pubDate[1]/text()" }<br/>
-};<br/>
+var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";<br/><br/>
+Dictionary<string, string> queries = new Dictionary<string, string>()<br/><br/>
+{<br/><br/>
+{ "name", "firstelement=title" },<br/><br/>
+  { "windspeed", @"numberfollowsnear=Wind\ Speed" },<br/><br/>
+  { "winddir", @"followinginnertext=Wind\ Direction" },<br/><br/>
+  { "pubdate", @"xpath=/rss[1]/channel[1]/pubDate[1]/text()" }<br/><br/>
+};<br/><br/>
 var r = await xSkrapeREST.GetMultiple(CLIENT_KEY, url, queries);
 </code>
 <br/><br/>
