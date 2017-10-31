@@ -7,7 +7,6 @@ One example is for pulling tabular data from an HTML source, in this case a spre
 <br/><br/>
 <pre><code>var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spreadsheets/d/1r_gYGu8nawdIk7wpUrbL1evCqE0eygC-TZwVD9ViS-o/edit?usp=sharing", "columnname=Name");
 </pre></code>
-<br/><br/>
 Of note, <i>one line of code</i> is all that's needed here to fully express <i>where</i> the data is, and a hint is provided about what it looks like (a column titled "Name"). As a second example:
 <br/><br/>
 <pre><code>var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";
@@ -20,7 +19,6 @@ Dictionary<string, string> queries = new Dictionary<string, string>()
 };
 var r = await xSkrapeREST.GetMultiple(CLIENT_KEY, url, queries);
 </code></pre>
-<br/><br/>
 Here we're pulling four discrete values from a single page source using four different approaches. The last approach of using an xpath expression works for virtually all pages: even ill-formed HTML. However, the simplest approaches are to use simple matching terms like "numberfollowsnear" - very easy to understand and use. We even have a tool that can make suggestions about how to extract values and tables - see https://www.xskrape.com/Home/XSPageExplorer.
 <br/><br/>
 Looking for a feature or have a cool idea? Drop us a line, admin@codexframework.com.
