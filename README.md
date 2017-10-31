@@ -11,17 +11,17 @@ var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spre
 <br/><br/>
 Of note, <i>one line of code</i> is all that's needed here to fully express <i>where</i> the data is, and a hint is provided about what it looks like (a column titled "Name"). As a second example:
 <br/><br/>
-<code>
-var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";<br/><br/>
-Dictionary<string, string> queries = new Dictionary<string, string>()<br/><br/>
-{<br/><br/>
-{ "name", "firstelement=title" },<br/><br/>
-  { "windspeed", @"numberfollowsnear=Wind\ Speed" },<br/><br/>
-  { "winddir", @"followinginnertext=Wind\ Direction" },<br/><br/>
-  { "pubdate", @"xpath=/rss[1]/channel[1]/pubDate[1]/text()" }<br/><br/>
-};<br/><br/>
+<pre><code>
+var url = @"http://www.ndbc.noaa.gov/data/latest_obs/46042.rss";
+Dictionary<string, string> queries = new Dictionary<string, string>()
+{
+{ "name", "firstelement=title" },
+  { "windspeed", @"numberfollowsnear=Wind\ Speed" },
+  { "winddir", @"followinginnertext=Wind\ Direction" },
+  { "pubdate", @"xpath=/rss[1]/channel[1]/pubDate[1]/text()" }
+};
 var r = await xSkrapeREST.GetMultiple(CLIENT_KEY, url, queries);
-</code>
+</code></pre>
 <br/><br/>
 Here we're pulling four discrete values from a single page source using four different approaches. The last approach of using an xpath expression works for virtually all pages: even ill-formed HTML. However, the simplest approaches are to use simple matching terms like "numberfollowsnear" - very easy to understand and use. We even have a tool that can make suggestions about how to extract values and tables - see https://www.xskrape.com/Home/XSPageExplorer.
 <br/><br/>
