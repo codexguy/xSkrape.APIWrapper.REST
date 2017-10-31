@@ -20,8 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\xSkrape.APIWrapper.Base\xSkrape.APIWrapper.Base.csproj" />
-    <ProjectReference Include="..\xSkrape.APIWrapper.REST\xSkrape.APIWrapper.REST.csproj" />
+    <PackageReference Include="xSkrape.APIWrapper.Base" Version="1.0.0" />
+    <PackageReference Include="xSkrape.APIWrapper.REST" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

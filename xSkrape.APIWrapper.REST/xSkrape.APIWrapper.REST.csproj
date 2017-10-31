@@ -10,10 +10,11 @@
     <RootNamespace>xSkrape.APIWrapper</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>XSAPIREST.snk</AssemblyOriginatorKeyFile>
-    <Description>xSkrape provides data parsing for structured, semi and non-structured data sources. Extract tabular and discrete data from sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel and other sources over http/https using simple directives. Pull data from Google Docs, shape data from web API's, merge data over multiple requests, and more. This assembly interacts with Web API services offered at www.xskrape.com. Source including comprehensive demo available on github.</Description>
+    <Description>xSkrape provides parsing / tabular detection for structured, semi and non-structured data sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel, DropBox, Google Docs and other sources using simple directives. Wraps the REST API offered at xskrape.com. Source + demos available on github.</Description>
     <PackageProjectUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST</PackageProjectUrl>
     <PackageReleaseNotes>- Support for data over http/https is included in this release
 - Related assembly, xSkrape.APIWrapper.SQL.Core provides helper methods to load / merge data parsed with this wrapper into SQL Server
+- Learn more: http://www.xskrape.com/home/products
 - Up-coming release of xSkrape.APIWrapper.xsOnPrem will support calling the same methods in-process, supporting local data sources (e.g. unc files) - will be available via custom download at xskrape.com.</PackageReleaseNotes>
     <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
@@ -31,10 +32,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\xSkrape.APIWrapper.Base\xSkrape.APIWrapper.Base.csproj" />
   </ItemGroup>
 
 </Project>

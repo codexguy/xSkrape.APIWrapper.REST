@@ -12,8 +12,10 @@
     <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>ado.net datatable dataset xskrape</PackageTags>
-    <PackageReleaseNotes>- Minimalist in this first release, includes common data access methods</PackageReleaseNotes>
+    <PackageReleaseNotes>- Minimalist in this first release, includes common data access methods
+- Learn more at: http://www.xskrape.com/home/products</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
 </Project>

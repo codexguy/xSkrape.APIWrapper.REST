@@ -9,7 +9,7 @@ namespace APIWrapperDemo
 {
     internal static class RESTExamples
     {
-        const string CLIENT_KEY = "98c0f811e85543f9a8a966634c949b59c858";
+        const string CLIENT_KEY = "OBTAIN_KEY_AT_XSKRAPE_COM";
 
         public static async Task Example1_TabularFromCSVHttp()
         {
@@ -37,7 +37,7 @@ namespace APIWrapperDemo
             try
             {
                 // Example - pull tabular data in a multi-page HTML grid (all pages) into a DataTable with appropriately typed columns
-                var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, @"{ url:""https://www.codexframework.com/xskrape/sampledata1?page={0}"", method:""step_sequential"", stop_on:""any"", arguments:[{start:1, step:1}] }");
+                var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, @"{ url:""https://www.codexframework.com/xskrape/sampledata1?page={0}"", method:""step_sequential"", stop_on:""any"", arguments:[{start:1, step:1}] }", "columnname=Quantity");
 
                 Console.WriteLine($"Success: {r.success}");
                 Console.WriteLine($"Message: {r.message}");
@@ -58,7 +58,7 @@ namespace APIWrapperDemo
             try
             {
                 // Example - perform client-side aggregation on the HTML grid data used in the previous example
-                var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, @"{ url:""https://www.codexframework.com/xskrape/sampledata1?page={0}"", method:""step_sequential"", stop_on:""any"", arguments:[{start:1, step:1}] }");
+                var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, @"{ url:""https://www.codexframework.com/xskrape/sampledata1?page={0}"", method:""step_sequential"", stop_on:""any"", arguments:[{start:1, step:1}] }", "columnname=Quantity");
 
                 Console.WriteLine($"Success: {r.success}");
                 Console.WriteLine($"Message: {r.message}");
