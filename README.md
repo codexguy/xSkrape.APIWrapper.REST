@@ -7,7 +7,7 @@ One example usage is for pulling tabular data from an HTML source, in this case 
 
 <code>
 var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, "https://docs.google.com/spreadsheets/d/1r_gYGu8nawdIk7wpUrbL1evCqE0eygC-TZwVD9ViS-o/edit?usp=sharing", "columnname=Name");
-</code>
+</code><br/>
 
 Of note, one line of code is all that's needed here to fully express <i>where</i> the data is, and a hint is provided about what it looks like (a column titled "Name").
 
