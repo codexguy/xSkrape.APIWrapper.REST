@@ -21,4 +21,6 @@ var r = await xSkrapeREST.GetMultiple(CLIENT_KEY, url, queries);
 </code></pre>
 Here we're pulling four discrete values from a single page source using four different approaches. The last approach of using an xpath expression works for virtually all pages: even ill-formed HTML. However, the simplest approaches are to use simple matching terms like "numberfollowsnear" - very easy to understand and use. We even have a tool that can make suggestions about how to extract values and tables - see https://www.xskrape.com/Home/XSPageExplorer.
 <br/><br/>
+Given that the REST library wraps what's available on xskrape.com, the library also offers the ability to send emails / SMS without requiring your own SMTP server, and generate random data as described here: https://www.xskrape.com/Home/ObfuscationPatterns
+<br/><br/>
 Looking for a feature or have a cool idea? Drop us a line, admin@codexframework.com.
