@@ -26,4 +26,10 @@
     <DocumentationFile>bin\Release\net471\xSkrape.APIWrapper.Base.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="dist\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <None Remove="dist\**" />
+  </ItemGroup>
+
 </Project>
