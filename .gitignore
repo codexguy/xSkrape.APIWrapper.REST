@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/xSkrape.APIWrapper.Base/dist
+/xSkrape.APIWrapper.REST/dist
+/xSkrape.APIWrapper.REST.Sample/dist

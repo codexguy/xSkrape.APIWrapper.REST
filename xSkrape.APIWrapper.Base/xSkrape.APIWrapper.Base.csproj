@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+    <TargetFrameworks>net471</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>XSAPIBASE.snk</AssemblyOriginatorKeyFile>
     <Authors>@codexguy</Authors>
@@ -13,12 +13,17 @@
     <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>ado.net datatable dataset xskrape</PackageTags>
     <PackageReleaseNotes>- Minimalist in this first release, includes common data access methods
-- Learn more at: http://www.xskrape.com/home/products</PackageReleaseNotes>
+- Learn more at: http://www.xskrape.com/home/faq</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
+    <ApplicationIcon>xSkrape.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net471|AnyCPU'">
+    <DocumentationFile>bin\Release\net471\xSkrape.APIWrapper.Base.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

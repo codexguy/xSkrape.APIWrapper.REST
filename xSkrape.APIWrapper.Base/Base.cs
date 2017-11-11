@@ -10,6 +10,9 @@ using System.Collections;
 
 namespace xSkrape.APIWrapper
 {
+    /// <summary>
+    /// Common extension methods used by xSkrape.
+    /// </summary>
     public static class Extensions
     {
         /// <summary>
@@ -31,11 +34,14 @@ namespace xSkrape.APIWrapper
 
             foreach (DataRow dr in dt.Rows)
             {
-                foreach (DataColumn dc in dt.Columns)
+                if (dr.RowState != DataRowState.Deleted)
                 {
-                    sb.Append(dr[dc].ToString().LeftWithEllipsis(maxWidth) + "  ");
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        sb.Append(dr[dc].ToString().LeftWithEllipsis(maxWidth) + "  ");
+                    }
+                    sb.Append(Environment.NewLine);
                 }
-                sb.Append(Environment.NewLine);
             }
 
             return sb.ToString();

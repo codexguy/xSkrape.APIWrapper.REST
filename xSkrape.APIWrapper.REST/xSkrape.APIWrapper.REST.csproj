@@ -1,32 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net471</TargetFrameworks>
+    <TargetFrameworks>net471</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>@codexguy</Authors>
     <Company>CodeX Enterprises LLC</Company>
     <Copyright>Copyright (c) 2017</Copyright>
-    <PackageTags>data parsing tabular relational unstructured scraping json shaping inference</PackageTags>
+    <PackageTags>data parsing tabular relational unstructured excel google docs spreadsheet scraping json html dropbox xml csv shaping tables</PackageTags>
     <RootNamespace>xSkrape.APIWrapper</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>XSAPIREST.snk</AssemblyOriginatorKeyFile>
-    <Description>xSkrape provides parsing / tabular detection for structured, semi and non-structured data sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel, DropBox, Google Docs and other sources using simple directives. Wraps the REST API offered at xskrape.com. Source + demos available on github.</Description>
+    <Description>xSkrape provides parsing / tabular detection for structured, semi and non-structured data sources with minimal coding. Interact with HTML, JSON, XML, CSV, Excel, DropBox, Google Docs and other sources using simple directives. This package contains a .cs file with example usage of the REST-based version.</Description>
     <PackageProjectUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST</PackageProjectUrl>
-    <PackageReleaseNotes>- Support for data over http/https is included in this release 
-- Related assembly, xSkrape.APIWrapper.SQL.Core provides helper methods to load / merge data parsed with this wrapper into SQL Server 
-- Learn more: http://www.xskrape.com/home/products 
-- Up-coming release of xSkrape.APIWrapper.InProc will support calling the same methods in-process, supporting local data sources (e.g. unc files)</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIconUrl>http://www.xskrape.com/images/XS96.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/codexguy/xSkrape.APIWrapper.REST/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.2</Version>
+    <ApplicationIcon>xSkrape.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net471|AnyCPU'">
+    <OutputPath>bin\current</OutputPath>
+    <DocumentationFile>bin\current\net471\xSkrape.APIWrapper.REST.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
     <OutputPath>bin\current</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.0|AnyCPU'">
-    <OutputPath>bin\current</OutputPath>
-  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="dist\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <None Remove="dist\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />

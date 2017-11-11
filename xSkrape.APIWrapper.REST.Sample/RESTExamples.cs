@@ -9,7 +9,57 @@ namespace APIWrapperDemo
 {
     internal static class RESTExamples
     {
-        const string CLIENT_KEY = "OBTAIN_KEY_AT_XSKRAPE_COM";
+        // Substitute your own client key, obtained by visiting https://www.xskrape.com, registering and adding a client query end-point
+        // Credit usage is explained more here: https://www.xskrape.com/home/faq - usage is generally FREE up until a certain level of usage, or in the case of the in-process libraries (fixed charge per machine per month), your first month per machine can often be covered by free monthly credits as a "trial" period
+        // Some examples below require your own client keys, etc. and may not return successful results without these being substituted in the code below (we have tested all examples with our own keys and got passes)
+        // Something on your wish list? Have your own unique use cases? Contact me, community@codexframework.com
+        // Other useful links:
+        //    http://www.codexframework.com/Documentation/XSRefGuide?ProdFilter=xsapi 
+        //    https://www.xskrape.com/Home/XSPageExplorer
+        //    https://www.xskrape.com/Home/XSSQL
+
+        const string CLIENT_KEY = "OBTAIN_KEY_FROM_XSKRAPE_DOT_COM";
+
+        /// <summary>
+        /// Invoke from a console app, for example, to run all examples.
+        /// </summary>
+        public static void RunAll()
+        {
+            Example15_Last3DaysFromW3SVCLogFilesInDirectory().Wait();
+            Example1_TabularFromCSVHttp().Wait();
+            Example2_TabularMultiPagedHTMLGrid().Wait();
+            Example3_ClientSideAggregationOverTabularResults().Wait();
+            Example4_MergeRequestFromWebAPIReturningShapedJSON().Wait();
+            Example5_SingleValueFromRSSFeed().Wait();
+            Example6_MergeMultipleRSSRequestsExtractingByLineNumber().Wait();
+            Example7_ExtractMultipleElementsFromSinglePage().Wait();
+            Example8_IsolateTabularDataOfInterestUsingTableIdentificationExpression().Wait();
+            Example9_ExtractAndFlattenJSONOnHtmlPage().Wait();
+            Example10_ExtractDataFromAnExcelFileLocatedInAZipFileStoredOnDropBox().Wait();
+            Example11_TabularDataFromGoogleDocsSpreadsheet().Wait();
+            Example12_PositionalBasedTabularDataInsidePreElement().Wait();
+        }
+
+        public static async Task Example15_Last3DaysFromW3SVCLogFilesInDirectory()
+        {
+            try
+            {
+                // Example - tabular data is not in a HTML table but in a text matrix inside a <pre> element; extract 4 columns of data based on position and length after applying chained filter terms and supporting a non-standard date format
+                var r = await xSkrapeREST.GetDataTable(CLIENT_KEY, @"{ method: ""enumerate_files"", file_path:""C:\\inetpub\\logs\\LogFiles\\W3SVC8"", max_pass:3, max_pass_ok:true }");
+
+                Console.WriteLine($"Success: {r.success}");
+                Console.WriteLine($"Message: {r.message}");
+
+                if (r.data != null)
+                {
+                    Console.WriteLine(r.data.RenderDataTable());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+        }
 
         public static async Task Example1_TabularFromCSVHttp()
         {
